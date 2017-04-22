@@ -1,0 +1,952 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-semantic-ui-react/node_modules/semantic-ui-react/dist/commonjs/modules/Progress/Progress.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-semantic-ui-react">npmtest-semantic-ui-react (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-semantic-ui-react/node_modules/semantic-ui-react/dist/commonjs/modules/Progress/Progress.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">54.93% <small>(39 / 71)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">16.13% <small>(5 / 31)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">22.22% <small>(2 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">58.46% <small>(38 / 65)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../../../../index.html">All files</a> » <a href="index.html">node-npmtest-semantic-ui-react/node_modules/semantic-ui-react/dist/commonjs/modules/Progress/</a> » Progress.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+&nbsp;
+var _extends2 = require('babel-runtime/helpers/extends');
+&nbsp;
+var _extends3 = _interopRequireDefault(_extends2);
+&nbsp;
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+&nbsp;
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+&nbsp;
+var _createClass2 = require('babel-runtime/helpers/createClass');
+&nbsp;
+var _createClass3 = _interopRequireDefault(_createClass2);
+&nbsp;
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+&nbsp;
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+&nbsp;
+var _inherits2 = require('babel-runtime/helpers/inherits');
+&nbsp;
+var _inherits3 = _interopRequireDefault(_inherits2);
+&nbsp;
+var _isNil2 = require('lodash/isNil');
+&nbsp;
+var _isNil3 = _interopRequireDefault(_isNil2);
+&nbsp;
+var _round2 = require('lodash/round');
+&nbsp;
+var _round3 = _interopRequireDefault(_round2);
+&nbsp;
+var _clamp2 = require('lodash/clamp');
+&nbsp;
+var _clamp3 = _interopRequireDefault(_clamp2);
+&nbsp;
+var _isUndefined2 = require('lodash/isUndefined');
+&nbsp;
+var _isUndefined3 = _interopRequireDefault(_isUndefined2);
+&nbsp;
+var _without2 = require('lodash/without');
+&nbsp;
+var _without3 = _interopRequireDefault(_without2);
+&nbsp;
+var _classnames = require('classnames');
+&nbsp;
+var _classnames2 = _interopRequireDefault(_classnames);
+&nbsp;
+var _propTypes = require('prop-types');
+&nbsp;
+var _propTypes2 = _interopRequireDefault(_propTypes);
+&nbsp;
+var _react = require('react');
+&nbsp;
+var _react2 = _interopRequireDefault(_react);
+&nbsp;
+var _lib = require('../../lib');
+&nbsp;
+function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { default: obj }; }
+&nbsp;
+/**
+ * A progress bar shows the progression of a task.
+ */
+var Progress = function (_Component) {
+  (0, _inherits3.default)(Progress, _Component);
+&nbsp;
+<span class="fstat-no" title="function not covered">  function Progress() {</span>
+<span class="cstat-no" title="statement not covered">    var _ref;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var _temp, _this, _ret;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    (0, _classCallCheck3.default)(this, Progress);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    for (var _len = arguments.length, args = Array(_len), _key = 0; _key &lt; _len; _key++) {</span>
+<span class="cstat-no" title="statement not covered">      args[_key] = arguments[_key];</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered">    return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = Progress.__proto__ || Object.getPrototypeOf(Progress)).call.apply(_ref, [this].concat(args))), _this), _this.calculatePercent = <span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="cstat-no" title="statement not covered">      var _this$props = _this.props,</span>
+          percent = _this$props.percent,
+          total = _this$props.total,
+          value = _this$props.value;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">      if (!(0, _isUndefined3.default)(percent)) <span class="cstat-no" title="statement not covered">return percent;</span></span>
+<span class="cstat-no" title="statement not covered">      if (!(0, _isUndefined3.default)(total) &amp;&amp; !(0, _isUndefined3.default)(value)) <span class="cstat-no" title="statement not covered">return value / total * 100;</span></span>
+    }, _this.getPercent = <span class="fstat-no" title="function not covered">function () {</span>
+<span class="cstat-no" title="statement not covered">      var precision = _this.props.precision;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      var percent = (0, _clamp3.default)(_this.calculatePercent(), 0, 100);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      if ((0, _isUndefined3.default)(precision)) <span class="cstat-no" title="statement not covered">return percent;</span></span>
+<span class="cstat-no" title="statement not covered">      return (0, _round3.default)(percent, precision);</span>
+    }, _this.isAutoSuccess = <span class="fstat-no" title="function not covered">function () {</span>
+<span class="cstat-no" title="statement not covered">      var _this$props2 = _this.props,</span>
+          autoSuccess = _this$props2.autoSuccess,
+          percent = _this$props2.percent,
+          total = _this$props2.total,
+          value = _this$props2.value;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">      return autoSuccess &amp;&amp; (percent &gt;= 100 || value &gt;= total);</span>
+    }, _this.renderLabel = <span class="fstat-no" title="function not covered">function () {</span>
+<span class="cstat-no" title="statement not covered">      var _this$props3 = _this.props,</span>
+          children = _this$props3.children,
+          label = _this$props3.label;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">      if (!(0, _isNil3.default)(children)) <span class="cstat-no" title="statement not covered">return _react2.default.createElement(</span></span>
+        'div',
+        { className: 'label' },
+        children
+      );
+<span class="cstat-no" title="statement not covered">      return (0, _lib.createHTMLDivision)(label, { defaultProps: { className: 'label' } });</span>
+    }, _this.renderProgress = <span class="fstat-no" title="function not covered">function (percent) {</span>
+<span class="cstat-no" title="statement not covered">      var _this$props4 = _this.props,</span>
+          precision = _this$props4.precision,
+          progress = _this$props4.progress,
+          total = _this$props4.total,
+          value = _this$props4.value;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">      if (!progress &amp;&amp; (0, _isUndefined3.default)(precision)) <span class="cstat-no" title="statement not covered">return;</span></span>
+<span class="cstat-no" title="statement not covered">      return _react2.default.createElement(</span>
+        'div',
+        { className: 'progress' },
+        progress !== 'ratio' ? percent + '%' : value + '/' + total
+      );
+    }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+  }
+&nbsp;
+  (0, _createClass3.default)(Progress, [{
+    key: 'render',
+    value: <span class="fstat-no" title="function not covered">function render() {</span>
+<span class="cstat-no" title="statement not covered">      var _props = this.props,</span>
+          active = _props.active,
+          attached = _props.attached,
+          className = _props.className,
+          color = _props.color,
+          disabled = _props.disabled,
+          error = _props.error,
+          indicating = _props.indicating,
+          inverted = _props.inverted,
+          size = _props.size,
+          success = _props.success,
+          warning = _props.warning;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">      var classes = (0, _classnames2.default)('ui', color, size, (0, _lib.useKeyOnly)(active || indicating, 'active'), (0, _lib.useKeyOnly)(disabled, 'disabled'), (0, _lib.useKeyOnly)(error, 'error'), (0, _lib.useKeyOnly)(indicating, 'indicating'), (0, _lib.useKeyOnly)(inverted, 'inverted'), (0, _lib.useKeyOnly)(success || this.isAutoSuccess(), 'success'), (0, _lib.useKeyOnly)(warning, 'warning'), (0, _lib.useValueAndKey)(attached, 'attached'), 'progress', className);</span>
+<span class="cstat-no" title="statement not covered">      var rest = (0, _lib.getUnhandledProps)(Progress, this.props);</span>
+<span class="cstat-no" title="statement not covered">      var ElementType = (0, _lib.getElementType)(Progress, this.props);</span>
+<span class="cstat-no" title="statement not covered">      var percent = this.getPercent();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">      return _react2.default.createElement(</span>
+        ElementType,
+        (0, _extends3.default)({}, rest, { className: classes }),
+        _react2.default.createElement(
+          'div',
+          { className: 'bar', style: { width: percent + '%' } },
+          this.renderProgress(percent)
+        ),
+        this.renderLabel()
+      );
+    }
+  }]);
+  return Progress;
+}(_react.Component);
+&nbsp;
+Progress._meta = {
+  name: 'Progress',
+  type: _lib.META.TYPES.MODULE
+};
+process.env.NODE_ENV !== "production" ? Progress.propTypes = {
+  /** An element type to render as (string or function). */
+  as: _lib.customPropTypes.as,
+&nbsp;
+  /** A progress bar can show activity. */
+  active: _propTypes2.default.bool,
+&nbsp;
+  /** A progress bar can attach to and show the progress of an element (i.e. Card or Segment). */
+  attached: _propTypes2.default.oneOf(['top', 'bottom']),
+&nbsp;
+  /** Whether success state should automatically trigger when progress completes. */
+  autoSuccess: _propTypes2.default.bool,
+&nbsp;
+  /** Primary content. */
+  children: _propTypes2.default.node,
+&nbsp;
+  /** Additional classes. */
+  className: _propTypes2.default.string,
+&nbsp;
+  /** A progress bar can have different colors. */
+  color: _propTypes2.default.oneOf(_lib.SUI.COLORS),
+&nbsp;
+  /** A progress bar be disabled. */
+  disabled: _propTypes2.default.bool,
+&nbsp;
+  /** A progress bar can show a error state. */
+  error: _propTypes2.default.bool,
+&nbsp;
+  /** An indicating progress bar visually indicates the current level of progress of a task. */
+  indicating: _propTypes2.default.bool,
+&nbsp;
+  /** A progress bar can have its colors inverted. */
+  inverted: _propTypes2.default.bool,
+&nbsp;
+  /** Can be set to either to display progress as percent or ratio. */
+  label: _lib.customPropTypes.itemShorthand,
+&nbsp;
+  /** Current percent complete. */
+  percent: _lib.customPropTypes.every([_lib.customPropTypes.disallow(['total', 'value']), _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string])]),
+&nbsp;
+  /** Decimal point precision for calculated progress. */
+  precision: _propTypes2.default.number,
+&nbsp;
+  /** A progress bar can contain a text value indicating current progress. */
+  progress: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.oneOf(['percent', 'ratio'])]),
+&nbsp;
+  /** A progress bar can vary in size. */
+  size: _propTypes2.default.oneOf((0, _without3.default)(_lib.SUI.SIZES, 'mini', 'huge', 'massive')),
+&nbsp;
+  /** A progress bar can show a success state. */
+  success: _propTypes2.default.bool,
+&nbsp;
+  /**
+   * For use with value.
+   * Together, these will calculate the percent.
+   * Mutually excludes percent.
+   */
+  total: _lib.customPropTypes.every([_lib.customPropTypes.demand(['value']), _lib.customPropTypes.disallow(['percent']), _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string])]),
+&nbsp;
+  /**
+   * For use with total. Together, these will calculate the percent. Mutually excludes percent.
+   */
+  value: _lib.customPropTypes.every([_lib.customPropTypes.demand(['total']), _lib.customPropTypes.disallow(['percent']), _propTypes2.default.oneOfType([_propTypes2.default.number, _propTypes2.default.string])]),
+&nbsp;
+  /** A progress bar can show a warning state. */
+  warning: _propTypes2.default.bool
+} : <span class="branch-1 cbranch-no" title="branch not covered">void 0;</span>
+Progress.handledProps = ['active', 'as', 'attached', 'autoSuccess', 'children', 'className', 'color', 'disabled', 'error', 'indicating', 'inverted', 'label', 'percent', 'precision', 'progress', 'size', 'success', 'total', 'value', 'warning'];
+exports.default = Progress;
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sat Apr 22 2017 00:41:50 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>
